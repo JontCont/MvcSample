@@ -46,11 +46,14 @@ namespace MvcSample.Controllers
         // 如需詳細資料，請參閱 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Memo")] Basic basic)
+        public ActionResult Create(BasicCreateData basic)
         {
             if (ModelState.IsValid)
             {
-                db.Basic.Add(basic);
+                db.Basic.Add(new Basic { 
+                    Name = basic.Name,
+                    Memo = basic.Memo
+                });
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
