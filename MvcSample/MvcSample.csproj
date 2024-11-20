@@ -134,6 +134,7 @@
     <Compile Include="Models\Basic.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BasicData.cs" />
     <Compile Include="Models\BasicCreateData.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>

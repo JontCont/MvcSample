@@ -17,7 +17,12 @@ namespace MvcSample.Controllers
         // GET: Basics
         public ActionResult Index()
         {
-            return View(db.Basic.ToList());
+            return View(db.Basic.Select(x => new BasicData
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Memo = x.Memo
+            }).ToList());
         }
 
         // GET: Basics/Details/5
@@ -50,7 +55,8 @@ namespace MvcSample.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Basic.Add(new Basic { 
+                db.Basic.Add(new Basic
+                {
                     Name = basic.Name,
                     Memo = basic.Memo
                 });
